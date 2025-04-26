@@ -1,0 +1,151 @@
+.map-section {
+    background: var(--background-dark);
+    padding: 5rem 0;
+}
+
+.map-card {
+    background: var(--background-card);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#mapaPUC {
+    height: 400px;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Estilos para o tema escuro do mapa */
+.leaflet-tile {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+.leaflet-container {
+    background: var(--background-dark) !important;
+}
+
+/* Estilos para os popups */
+.map-popup {
+    padding: 0.5rem;
+    min-width: 200px;
+}
+
+.map-popup h6 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.map-popup p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.map-popup small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* Estilos para os marcadores personalizados */
+.custom-div-icon {
+    background: none;
+    border: none;
+}
+
+.custom-div-icon i {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Lista de campus */
+.campus-list {
+    padding: 2rem;
+    background: var(--background-card);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.campus-list h5 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.campus-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.campus-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.campus-item i {
+    font-size: 1.25rem;
+}
+
+.campus-item span {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #mapaPUC {
+        height: 300px;
+    }
+    
+    .campus-list {
+        max-height: 200px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-color) var(--background-dark);
+    }
+
+    .campus-list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .campus-list::-webkit-scrollbar-track {
+        background: var(--background-dark);
+    }
+
+    .campus-list::-webkit-scrollbar-thumb {
+        background-color: var(--accent-color);
+        border-radius: 3px;
+    }
+}
+
+/* Correções para o tema escuro do Leaflet */
+.leaflet-popup-content-wrapper {
+    background: var(--background-elevated) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+}
+
+.leaflet-popup-tip {
+    background: var(--background-elevated) !important;
+}
+
+.leaflet-popup-close-button {
+    color: var(--text-primary) !important;
+}
+
+.leaflet-control-zoom a {
+    background: var(--background-elevated) !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: var(--text-muted) !important;
+}
+
+.leaflet-control-attribution a {
+    color: var(--accent-color) !important;
+}

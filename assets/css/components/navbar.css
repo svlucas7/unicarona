@@ -1,0 +1,126 @@
+/* assets/css/components/navbar.css */
+.navbar {
+    height: var(--nav-height);
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(10, 10, 15, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    color: var(--text-primary);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--accent-color);
+}
+
+.navbar-brand i {
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover i {
+    transform: translateX(3px);
+}
+
+/* Links de navegação */
+.nav-link {
+    color: var(--text-secondary) !important; /* Forçar cor inicial */
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem !important;
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-primary) !important; /* Forçar cor no hover e quando ativo */
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Ajuste para o tema escuro */
+.navbar-nav .nav-link {
+    color: var(--text-secondary) !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.active {
+    color: var(--text-primary) !important;
+}
+
+/* Ajuste para o menu mobile */
+@media (max-width: 991.98px) {
+    .navbar-nav .nav-link {
+        color: var(--text-secondary) !important;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus,
+    .navbar-nav .nav-link.active {
+        color: var(--text-primary) !important;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+    }
+
+    .navbar-collapse {
+        background: var(--background-card);
+        padding: 1rem;
+        border-radius: 12px;
+        margin-top: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+
+    .navbar .btn {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}
+
+.navbar-toggler {
+    color: var(--text-primary);
+    border: none;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler:hover {
+    transform: rotate(90deg);
+}
+
+.navbar .btn {
+    padding: 0.5rem 1.25rem !important;
+    font-size: 0.9rem;
+}

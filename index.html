@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniCarona PUC - Caronas Universitárias</title>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    
+    <!-- Nossos estilos -->
+    <link rel="stylesheet" href="assets/css/utils/variables.css">
+    <link rel="stylesheet" href="assets/css/utils/reset.css">
+    <link rel="stylesheet" href="assets/css/utils/animations.css">
+    <link rel="stylesheet" href="assets/css/components/navbar.css">
+    <link rel="stylesheet" href="assets/css/components/hero.css">
+    <link rel="stylesheet" href="assets/css/components/map.css">
+    <link rel="stylesheet" href="assets/css/components/features.css">
+    <link rel="stylesheet" href="assets/css/components/faq.css">
+    <link rel="stylesheet" href="assets/css/components/cta.css">
+    <link rel="stylesheet" href="assets/css/components/buttons.css">
+    <link rel="stylesheet" href="assets/css/components/loading.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- Meta tags existentes -->
+    <meta name="description" content="UniCarona - Plataforma de caronas exclusiva para alunos da PUC Minas. Conecte-se com outros estudantes e encontre caronas de forma segura e econômica.">
+    <meta name="keywords" content="carona, puc minas, universitário, mobilidade, transporte universitário">
+    <meta name="author" content="Alunos PUC Minas">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://unicarona.com/">
+    <meta property="og:title" content="UniCarona - Caronas Universitárias PUC Minas">
+    <meta property="og:description" content="Plataforma de caronas exclusiva para alunos da PUC Minas">
+    <meta property="og:image" content="assets/img/og-image.jpg">
+
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+</head>
+<body>
+    <div id="loading" class="loading-overlay">
+        <div class="loading-content">
+            <i class="fas fa-car-side fa-spin"></i>
+            <span>Carregando...</span>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-car-side"></i> UniCarona
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Como Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#map">Unidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-glow" href="/login">
+                            <span><i class="fas fa-sign-in-alt me-2"></i>Entrar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-outline-glow" href="/register">
+                            <span><i class="fas fa-user-plus me-2"></i>Cadastrar</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background"></div>
+        <div class="container position-relative">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="display-4 fw-bold mb-4 hero-title">
+                        Conecte-se ao futuro<br>
+                        <span class="gradient-text">das caronas universitárias</span>
+                    </h1>
+                    <p class="lead mb-4 hero-description">
+                        Uma nova experiência de mobilidade para a comunidade PUC.
+                        Mais segura, mais econômica e totalmente conectada.
+                    </p>
+                    <div class="d-flex gap-3 hero-buttons">
+                        <button class="btn btn-glow btn-lg">
+                            <span><i class="fas fa-car-side me-2"></i>Oferecer Carona</span>
+                        </button>
+                        <button class="btn btn-outline-glow btn-lg">
+                            <span><i class="fas fa-search me-2"></i>Procurar Carona</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa Section -->
+    <section id="map" class="map-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Unidades PUC Minas</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="map-card">
+                        <div id="mapaPUC"></div>
+                        <div class="campus-list">
+                            <h5>Unidades Disponíveis:</h5>
+                            <div class="row g-3 mt-2">
+                                <div class="col-md-4">
+                                    <div class="campus-item">
+                                        <i class="fas fa-university" style="color: #6D28D9;"></i>
+                                        <span>Coração Eucarístico</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="campus-item">
+                                        <i class="fas fa-university" style="color: #2563EB;"></i>
+                                        <span>Betim</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="campus-item">
+                                        <i class="fas fa-university" style="color: #10B981;"></i>
+                                        <span>São Gabriel</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="campus-item">
+                                        <i class="fas fa-university" style="color: #7C3AED;"></i>
+                                        <span>São José</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="campus-item">
+                                        <i class="fas fa-university" style="color: #F59E0B;"></i>
+                                        <span>Praça da Liberdade</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="campus-item">
+                                        <i class="fas fa-university" style="color: #2563EB;"></i>
+                                        <span>Barreiro</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por Que Usar Seção -->
+    <section id="features" class="features-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Por que usar o UniCarona?</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Segurança</h3>
+                        <p>Exclusivo para alunos PUC, com verificação de matrícula e sistema de avaliações.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3>Economia</h3>
+                        <p>Divida custos de transporte e economize com estacionamento e combustível.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Sustentabilidade</h3>
+                        <p>Reduza a emissão de CO₂ compartilhando viagens com outros estudantes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Perguntas Frequentes</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Como funciona o UniCarona?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    O UniCarona conecta estudantes da PUC que fazem trajetos similares. Motoristas podem oferecer caronas e passageiros podem procurar caronas disponíveis para seu trajeto, tudo através da nossa plataforma.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Como garantem a segurança dos usuários?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Verificamos o vínculo com a PUC de todos os usuários através do email institucional. Além disso, temos um sistema de avaliações e feedback após cada viagem.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Como é feita a verificação dos usuários?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A verificação é feita através do email institucional da PUC (@sga.pucminas.br). Apenas alunos com matrícula ativa podem se cadastrar na plataforma.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Como funciona o sistema de avaliação?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Após cada viagem, os usuários podem avaliar a experiência. Isso ajuda a manter a qualidade e segurança do serviço para toda a comunidade.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="cta-card" data-aos="fade-up">
+                <h2 class="text-center mb-4">Comece a usar o UniCarona hoje!</h2>
+                <p class="lead text-center mb-4">Encontre ou ofereça caronas de forma segura e econômica</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <button class="btn btn-glow">
+                        <span><i class="fas fa-car-side me-2"></i>Oferecer Carona</span>
+                    </button>
+                    <button class="btn btn-outline-glow">
+                        <span><i class="fas fa-search me-2"></i>Procurar Carona</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <i class="fas fa-car-side"></i>
+                        <h3>UniCarona</h3>
+                    </div>
+                    <p class="mt-3">Projeto desenvolvido por alunos do curso de Engenharia de Software da PUC Minas, visando facilitar a mobilidade universitária.</p>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Navegação</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Como Funciona</a></li>
+                        <li><a href="#map">Unidades</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Unidades PUC</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Coração Eucarístico</a></li>
+                        <li><a href="#">São Gabriel</a></li>
+                        <li><a href="#">Praça da Liberdade</a></li>
+                        <li><a href="#">Barreiro</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://www.pucminas.br" target="_blank">PUC Minas</a></li>
+                        <li><a href="https://github.com/seu-usuario/unicarona" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2025 UniCarona - Projeto Acadêmico</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small>Desenvolvido por Alunos PUC Minas</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Nossos scripts -->
+    <script src="assets/js/utils/helpers.js"></script>
+    <script src="assets/js/components/navbar.js"></script>
+    <script src="assets/js/components/map.js"></script>
+    <script src="assets/js/components/animations.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/components/utils.js"></script>
+</body>
+</html>
