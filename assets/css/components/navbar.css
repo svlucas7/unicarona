@@ -13,13 +13,21 @@
 }
 
 .navbar-brand {
-    color: var(--text-primary);
-    font-weight: 700;
-    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
 }
 
-.navbar-brand:hover {
-    color: var(--accent-color);
+.navbar-logo {
+    height: 55px !important;
+    width: auto !important;
+    max-width: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover .navbar-logo {
+    transform: scale(1.05);
 }
 
 .navbar-brand i {
@@ -29,6 +37,13 @@
 
 .navbar-brand:hover i {
     transform: translateX(3px);
+}
+
+/* Ajuste para dispositivos móveis */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 40px !important;
+    }
 }
 
 /* Links de navegação */

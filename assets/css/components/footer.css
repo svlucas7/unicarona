@@ -8,6 +8,19 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer .footer-brand .footer-logo {
+    height: 67px !important;
+    width: auto !important;
+    max-width: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.footer-brand:hover .footer-logo {
+    transform: scale(1.05);
 }
 
 .footer-brand i {
